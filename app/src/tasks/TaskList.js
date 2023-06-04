@@ -8,8 +8,8 @@ import { useAccount } from '../hooks/useAccount'
 import { defaultColors, defaultStyles } from '../styles/defaultStyles'
 
 const { useTracker } = Meteor
-const toggleChecked = ({ _id, checked }) => Meteor.call('tasks.setIsChecked', { _id, checked })
-const deleteTask = ({ _id }) => Meteor.call('tasks.remove', { _id })
+const toggleChecked = async ({_id, checked}) => await Meteor.callAsync('tasks.setIsChecked', {_id, checked})
+const deleteTask = async ({ _id }) => Meteor.callAsync('tasks.remove', { _id })
 
 export const TaskList = () => {
   const { user } = useAccount()

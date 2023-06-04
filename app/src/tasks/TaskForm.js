@@ -7,10 +7,10 @@ import { ErrorMessage } from '../components/ErrorMessage'
 export const TaskForm = () => {
   const [text, setText] = useState('')
   const [error, setError] = useState('')
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
     if (!text) return
-    Meteor.call('tasks.insert', { text }, (err) => {
+    await Meteor.callAsync('tasks.insert', {text}, (err) => {
       if (err) {
         return setError(err)
       }
